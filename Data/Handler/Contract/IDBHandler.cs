@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookmarkItLibrary
+namespace BookmarkItLibrary.Data.Handler.Contract
 {
-    public class Class1
+    public interface IDBHandler
     {
+        void Initialize();
     }
 }
