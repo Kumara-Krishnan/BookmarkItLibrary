@@ -1,5 +1,9 @@
-﻿using BookmarkItLibrary.Data.Handler;
+﻿using BookmarkItLibrary.Data;
+using BookmarkItLibrary.Data.Contract;
+using BookmarkItLibrary.Data.Handler;
 using BookmarkItLibrary.Data.Handler.Contract;
+using BookmarkItLibrary.Domain;
+using BookmarkItLibrary.Model.Entity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -27,6 +31,13 @@ namespace BookmarkItLibrary.DI
 
             serviceCollection.AddSingleton<IDBHandler, DBHandler>();
             serviceCollection.AddSingleton<INetHandler, NetHandler>();
+
+            serviceCollection.AddSingleton<IGetBookmarksDataManager, GetBookmarksDataManager>();
+            serviceCollection.AddSingleton<IGetCurrentUserDetailsDataManager, GetCurrentUserDetailsDataManager>();
+            serviceCollection.AddSingleton<IGetRequestTokenDataManager, GetRequestTokenDataManager>();
+            serviceCollection.AddSingleton<IGetUserDetailsDataManager, GetUserDetailsDataManager>();
+
+            serviceCollection.AddSingleton<ISettingsDataManager<BookmarkItSettings>, SettingsDataManager>();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
         }

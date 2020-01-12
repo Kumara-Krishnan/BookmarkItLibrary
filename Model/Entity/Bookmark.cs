@@ -14,6 +14,10 @@ namespace BookmarkItLibrary.Model.Entity
         [PrimaryKey]
         public string Id { get; set; }
 
+        public string EntityId { get; set; }
+
+        public string UserId { get; set; }
+
         public string ResolvedId { get; set; }
 
         public string Url { get; set; }
@@ -32,10 +36,35 @@ namespace BookmarkItLibrary.Model.Entity
 
         public BookmarkStatus Status { get; set; }
 
-        public bool HasImage { get; set; }
+        public long CreatedTime { get; set; }
 
-        public bool HasVideo { get; set; }
+        public long UpdatedTime { get; set; }
+
+        public long TimeMarkedAsRead { get; set; }
+
+        public long TimeFavorited { get; set; }
+
+        public ImagePresence ImagePresence { get; set; }
+
+        public VideoPresence VideoPresence { get; set; }
+
+        public string CoverImageUrl { get; set; }
 
         public long WordCount { get; set; }
+
+        public string Language { get; set; }
+
+        public long TimeToRead { get; set; }
+
+        public long TimeToListen { get; set; }
+
+        public Bookmark() { }
+
+        public Bookmark(string userId, string entityId)
+        {
+            Id = $"{userId}_{entityId}";
+            UserId = userId;
+            EntityId = entityId;
+        }
     }
 }

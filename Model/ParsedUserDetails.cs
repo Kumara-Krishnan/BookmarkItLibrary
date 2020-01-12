@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookmarkItLibrary.Model.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,13 @@ namespace BookmarkItLibrary.Model
 {
     public sealed class ParsedUserDetails
     {
-        public string UserName { get; set; }
+        public UserDetails User { get; set; }
 
         public string AccessToken { get; set; }
 
-        public ParsedUserDetails(string userName, string accessToken)
+        public ParsedUserDetails(UserDetails user, string accessToken)
         {
-            UserName = userName;
+            User = user;
             AccessToken = accessToken;
         }
     }

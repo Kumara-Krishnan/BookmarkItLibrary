@@ -120,22 +120,41 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Data\Contract\DataManagerBase.cs" />
+    <Compile Include="Data\Contract\SettingsDataManagerBase.cs" />
+    <Compile Include="Data\GetBookmarksDataManager.cs" />
+    <Compile Include="Data\GetCurrentUserDetailsDataManager.cs" />
+    <Compile Include="Data\GetRequestTokenDataManager.cs" />
     <Compile Include="Data\Handler\Contract\IDBHandler.cs" />
     <Compile Include="Data\Handler\Contract\INetHandler.cs" />
     <Compile Include="Data\Handler\DBHandler.cs" />
     <Compile Include="Data\Handler\NetHandler.cs" />
     <Compile Include="Data\Parser\ResponseDataParser.cs" />
+    <Compile Include="Data\SettingsDataManager.cs" />
     <Compile Include="DI\DIServiceProvider.cs" />
+    <Compile Include="Domain\GetBookmarks.cs" />
+    <Compile Include="Domain\GetCurrentUserDetails.cs" />
+    <Compile Include="Domain\GetRequestToken.cs" />
+    <Compile Include="Domain\GetUserDetails.cs" />
     <Compile Include="Model\BookmarkBObj.cs" />
     <Compile Include="Model\Contract\IAttachment.cs" />
     <Compile Include="Model\Contract\IBookmark.cs" />
+    <Compile Include="Model\Entity\Author.cs" />
     <Compile Include="Model\Entity\Bookmark.cs" />
+    <Compile Include="Model\Entity\BookmarkAuthorMapper.cs" />
+    <Compile Include="Model\Entity\BookmarkDomainMapper.cs" />
+    <Compile Include="Model\Entity\BookmarkItSettings.cs" />
+    <Compile Include="Model\Entity\DomainMetaData.cs" />
     <Compile Include="Model\Entity\Image.cs" />
+    <Compile Include="Model\Entity\Tag.cs" />
+    <Compile Include="Model\Entity\UserDetails.cs" />
     <Compile Include="Model\Entity\Video.cs" />
+    <Compile Include="Model\ParsedBookmarksResponse.cs" />
     <Compile Include="Model\ParsedUserDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Constants.cs" />
     <Compile Include="Util\Enums.cs" />
+    <Compile Include="Util\LibUtil.cs" />
     <EmbeddedResource Include="Properties\BookmarkItLibrary.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +172,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\" />
+    <Compile Include="Data\GetUserDetailsDataManager.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
