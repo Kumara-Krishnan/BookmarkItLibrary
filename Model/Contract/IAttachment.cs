@@ -12,6 +12,8 @@ namespace BookmarkItLibrary.Model.Contract
 
         string BookmarkId { get; set; }
 
+        string EntityId { get; set; }
+
         string Url { get; set; }
 
         double Width { get; set; }
