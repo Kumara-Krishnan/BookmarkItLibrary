@@ -40,7 +40,7 @@ namespace BookmarkItLibrary.Domain
             DataManager = DIServiceProvider.Instance.GetService<IGetRequestTokenDataManager>();
         }
 
-        public override void Action()
+        protected override void Action()
         {
             DataManager.GetRequestTokenAsync(Request, new UseCaseCallback(this));
         }
@@ -57,6 +57,11 @@ namespace BookmarkItLibrary.Domain
             public override void OnError(UseCaseError error)
             {
                 UseCase.PresenterCallback?.OnError(error);
+            }
+
+            public override void OnFailed(IUseCaseResponse<GetRequestTokenResponse> response)
+            {
+                UseCase.PresenterCallback?.OnFailed(response);
             }
 
             public override void OnSuccess(IUseCaseResponse<GetRequestTokenResponse> response)
