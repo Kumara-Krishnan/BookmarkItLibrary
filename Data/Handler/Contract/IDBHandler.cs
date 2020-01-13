@@ -1,5 +1,6 @@
 ﻿using BookmarkItLibrary.Model;
 using BookmarkItLibrary.Model.Entity;
+using BookmarkItLibrary.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,12 @@ namespace BookmarkItLibrary.Data.Handler.Contract
         int SetSetting<T>(T setting) where T : SettingsBase, new();
 
         int AddOrReplaceParsedBookmarksResponse(ParsedBookmarksResponse bookmarksResponse);
+
+        IEnumerable<BookmarkBObj> GetBookmarks(string userId, BookmarkFilter filter, bool? isFavorite, string tag, BookmarkType bookmarkType,
+            SortBy sortBy, int? count, int? offset);
+
+        IEnumerable<ImageBObj> GetImagesByBookmarkIds(params string[] bookmarkIds);
+
+        IEnumerable<VideoBObj> GetVideosByBookmarkIds(params string[] bookmarkIds);
     }
 }
