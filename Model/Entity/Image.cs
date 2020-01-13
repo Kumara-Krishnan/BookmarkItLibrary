@@ -25,8 +25,6 @@ namespace BookmarkItLibrary.Model.Entity
 
         public double Height { get; set; }
 
-        public string LocalFileName { get; set; }
-
         public string Credit { get; set; }
 
         public string Caption { get; set; }

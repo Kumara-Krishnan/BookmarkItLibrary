@@ -123,10 +123,7 @@ namespace BookmarkItLibrary.Data.Parser
                     bookmark.Domain = ParseDomainMetaData(jBookmark.GetJObject("domain_metadata"));
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch { }
             return bookmark;
         }
 
@@ -158,7 +155,7 @@ namespace BookmarkItLibrary.Data.Parser
             return tags;
         }
 
-        private static IEnumerable<Image> ParseImages(JObject jImages)
+        private static IEnumerable<ImageBObj> ParseImages(JObject jImages)
         {
             var imageIds = jImages.Keys();
             foreach (var imageId in imageIds)
@@ -168,9 +165,9 @@ namespace BookmarkItLibrary.Data.Parser
             }
         }
 
-        private static Image ParseImage(JObject jImage)
+        private static ImageBObj ParseImage(JObject jImage)
         {
-            return new Image(jImage.GetString("item_id"), jImage.GetString("image_id"))
+            return new ImageBObj(jImage.GetString("item_id"), jImage.GetString("image_id"))
             {
                 Url = jImage.GetString("src"),
                 Width = jImage.GetDouble("width"),
@@ -180,7 +177,7 @@ namespace BookmarkItLibrary.Data.Parser
             };
         }
 
-        private static IEnumerable<Video> ParseVideos(JObject jVideos)
+        private static IEnumerable<VideoBObj> ParseVideos(JObject jVideos)
         {
             var videoIds = jVideos.Keys();
             foreach (var videoId in videoIds)
@@ -190,9 +187,9 @@ namespace BookmarkItLibrary.Data.Parser
             }
         }
 
-        private static Video ParseVideo(JObject jVideo)
+        private static VideoBObj ParseVideo(JObject jVideo)
         {
-            return new Video(jVideo.GetString("item_id"), jVideo.GetString("video_id"))
+            return new VideoBObj(jVideo.GetString("item_id"), jVideo.GetString("video_id"))
             {
                 Url = jVideo.GetString("src"),
                 Width = jVideo.GetDouble("video"),
@@ -223,9 +220,9 @@ namespace BookmarkItLibrary.Data.Parser
             };
         }
 
-        private static DomainMetaData ParseDomainMetaData(JObject jDomainInfo)
+        private static DomainMetaDataBObj ParseDomainMetaData(JObject jDomainInfo)
         {
-            return new DomainMetaData()
+            return new DomainMetaDataBObj()
             {
                 Id = jDomainInfo.GetString("name"),
                 Name = jDomainInfo.GetString("name"),

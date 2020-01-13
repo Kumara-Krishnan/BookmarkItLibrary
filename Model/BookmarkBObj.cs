@@ -14,13 +14,13 @@ namespace BookmarkItLibrary.Model
     {
         public readonly List<Tag> Tags = new List<Tag>();
 
-        public readonly List<Image> Images = new List<Image>();
+        public readonly List<ImageBObj> Images = new List<ImageBObj>();
 
-        public readonly List<Video> Videos = new List<Video>();
+        public readonly List<VideoBObj> Videos = new List<VideoBObj>();
 
         public readonly List<Author> Authors = new List<Author>();
 
-        public DomainMetaData Domain { get; set; }
+        public DomainMetaDataBObj Domain { get; set; }
 
         public BookmarkBObj() : base() { }
 
@@ -36,7 +36,7 @@ namespace BookmarkItLibrary.Model
             }
         }
 
-        public void SetImages(IEnumerable<Image> images)
+        public void SetImages(IEnumerable<ImageBObj> images)
         {
             Images.Clear();
             if (images == default) { return; }
@@ -46,7 +46,7 @@ namespace BookmarkItLibrary.Model
             }
         }
 
-        public void SetVideos(IEnumerable<Video> videos)
+        public void SetVideos(IEnumerable<VideoBObj> videos)
         {
             Videos.Clear();
             if (videos == default) { return; }

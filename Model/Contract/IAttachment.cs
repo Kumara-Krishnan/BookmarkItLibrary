@@ -19,7 +19,10 @@ namespace BookmarkItLibrary.Model.Contract
         double Width { get; set; }
 
         double Height { get; set; }
+    }
 
+    public interface IAttachment1 : IAttachment
+    {
         string LocalFileName { get; set; }
     }
 }

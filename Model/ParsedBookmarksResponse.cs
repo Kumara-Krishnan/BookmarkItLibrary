@@ -13,17 +13,19 @@ namespace BookmarkItLibrary.Model
 
         public readonly List<Tag> Tags = new List<Tag>();
 
-        public readonly List<Image> Images = new List<Image>();
+        public readonly List<ImageBObj> Images = new List<ImageBObj>();
 
-        public readonly List<Video> Videos = new List<Video>();
+        public readonly List<VideoBObj> Videos = new List<VideoBObj>();
 
         public readonly List<Author> Authors = new List<Author>();
 
         public readonly List<BookmarkAuthorMapper> AuthorMapper = new List<BookmarkAuthorMapper>();
 
-        public readonly List<DomainMetaData> Domains = new List<DomainMetaData>();
+        public readonly List<DomainMetaDataBObj> Domains = new List<DomainMetaDataBObj>();
 
         public readonly List<BookmarkDomainMapper> DomainMapper = new List<BookmarkDomainMapper>();
+
+        public readonly List<string> BookmarkIdsToBeDeleted = new List<string>();
 
         public readonly string UserId;
 
@@ -59,7 +61,7 @@ namespace BookmarkItLibrary.Model
             }
         }
 
-        private void AddDomain(string bookmarkId, DomainMetaData domain)
+        private void AddDomain(string bookmarkId, DomainMetaDataBObj domain)
         {
             if (domain != null)
             {
