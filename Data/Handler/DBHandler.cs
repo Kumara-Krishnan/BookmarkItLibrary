@@ -1,4 +1,4 @@
-using BookmarkItLibrary.Data.Handler.Contract;
+﻿using BookmarkItLibrary.Data.Handler.Contract;
 using BookmarkItLibrary.Model;
 using BookmarkItLibrary.Model.Entity;
 using BookmarkItLibrary.Util;
@@ -34,6 +34,7 @@ namespace BookmarkItLibrary.Data.Handler
                 typeof(BookmarkDomainMapper),
                 typeof(BookmarkItSettings),
                 typeof(DomainMetaData),
+                typeof(DownloadsMapper),
                 typeof(Image),
                 typeof(Tag),
                 typeof(UserDetails),
