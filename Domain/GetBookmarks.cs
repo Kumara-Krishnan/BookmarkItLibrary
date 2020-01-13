@@ -1,4 +1,5 @@
-﻿using BookmarkItLibrary.Model;
+﻿using BookmarkItLibrary.DI;
+using BookmarkItLibrary.Model;
 using BookmarkItLibrary.Util;
 using System;
 using System.Collections.Generic;
@@ -24,13 +25,13 @@ namespace BookmarkItLibrary.Domain
         public SortBy SortBy { get; set; }
         public string SearchKey { get; set; }
         public string Domain { get; set; }
-        public DateTime Since { get; set; }
+        public long Since { get; set; }
         public int? Count { get; set; }
         public int? Offset { get; set; }
 
-        public GetBookmarksRequest(RequestType type, string userName, CancellationTokenSource cts = default) : base(type, userName, cts) { }
+        public GetBookmarksRequest(RequestType type, string userId, CancellationTokenSource cts = default) : base(type, userId, cts) { }
 
-        public GetBookmarksRequest(RequestType type, DateTime since, string userName, CancellationTokenSource cts = default) : this(type, userName, cts)
+        public GetBookmarksRequest(RequestType type, long since, string userId, CancellationTokenSource cts = default) : this(type, userId, cts)
         {
             Since = since;
         }
@@ -48,8 +49,43 @@ namespace BookmarkItLibrary.Domain
 
     public interface IGetBookmarksPresenterCallback : ICallback<GetBookmarksResponse> { }
 
-    public sealed class GetBookmarks
+    public sealed class GetBookmarks : UseCaseBase<GetBookmarksRequest, GetBookmarksResponse>
     {
+        private readonly IGetBookmarksDataManager DataManager;
 
+        public GetBookmarks(GetBookmarksRequest request, IGetBookmarksPresenterCallback callback) : base(request, callback)
+        {
+            DataManager = DIServiceProvider.Instance.GetService<IGetBookmarksDataManager>();
+        }
+
+        protected override void Action()
+        {
+            DataManager.GetBookmarksAsync(Request, new UseCaseCallback(this));
+        }
+
+        class UseCaseCallback : CallbackBase<GetBookmarksResponse>
+        {
+            private readonly GetBookmarks UseCase;
+
+            public UseCaseCallback(GetBookmarks useCase)
+            {
+                UseCase = useCase;
+            }
+
+            public override void OnError(UseCaseError error)
+            {
+                UseCase.PresenterCallback?.OnError(error);
+            }
+
+            public override void OnFailed(IUseCaseResponse<GetBookmarksResponse> response)
+            {
+                UseCase.PresenterCallback?.OnFailed(response);
+            }
+
+            public override void OnSuccess(IUseCaseResponse<GetBookmarksResponse> response)
+            {
+                UseCase.PresenterCallback?.OnSuccess(response);
+            }
+        }
     }
 }
