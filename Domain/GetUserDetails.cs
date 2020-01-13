@@ -20,16 +20,14 @@ namespace BookmarkItLibrary.Domain
         Task<ParsedUserDetails> FetchUserDetailsFromServerAsync(GetUserDetailsRequest request, UserDetails userDetailsFromDB = default);
     }
 
-    public class GetUserDetailsRequest : UseCaseRequest
+    public class GetUserDetailsRequest : AuthenticatedUseCaseRequest
     {
-        public readonly string UserId;
         public readonly string RequestToken;
         public readonly bool SetAsCurrentUser;
 
         public GetUserDetailsRequest(RequestType type, string userId, string requestToken = default, bool setAsCurrentUser = false,
-            CancellationTokenSource cts = default) : base(type, cts)
+            CancellationTokenSource cts = default) : base(type, userId, cts)
         {
-            UserId = userId;
             RequestToken = requestToken;
             SetAsCurrentUser = setAsCurrentUser;
         }
@@ -56,7 +54,7 @@ namespace BookmarkItLibrary.Domain
             DataManager = DIServiceProvider.Instance.GetService<IGetUserDetailsDataManager>();
         }
 
-        public override void Action()
+        protected override void Action()
         {
             DataManager.GetUserDetailsAsync(Request, new UseCaseCallback(this));
         }
@@ -73,6 +71,11 @@ namespace BookmarkItLibrary.Domain
             public override void OnError(UseCaseError error)
             {
                 UseCase.PresenterCallback?.OnError(error);
+            }
+
+            public override void OnFailed(IUseCaseResponse<GetUserDetailsResponse> response)
+            {
+                UseCase.PresenterCallback?.OnFailed(response);
             }
 
             public override void OnSuccess(IUseCaseResponse<GetUserDetailsResponse> response)

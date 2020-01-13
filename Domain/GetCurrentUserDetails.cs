@@ -40,7 +40,7 @@ namespace BookmarkItLibrary.Domain
             DataManager = DIServiceProvider.Instance.GetService<IGetCurrentUserDetailsDataManager>();
         }
 
-        public override void Action()
+        protected override void Action()
         {
             DataManager.GetCurrentUserDetails(Request, new UseCaseCallback(this));
         }
