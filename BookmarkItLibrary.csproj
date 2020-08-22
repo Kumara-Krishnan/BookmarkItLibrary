@@ -11,32 +11,11 @@
     <AssemblyName>BookmarkItLibrary</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -60,52 +39,8 @@
     <ErrorReport>prompt</ErrorReport>
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
-    <PlatformTarget>ARM</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\ARM\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>full</DebugType>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <PlatformTarget>ARM</PlatformTarget>
-    <OutputPath>bin\ARM\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
-    <PlatformTarget>ARM64</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\ARM64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>full</DebugType>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
-    <PlatformTarget>ARM64</PlatformTarget>
-    <OutputPath>bin\ARM64\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
@@ -114,6 +49,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <LangVersion>7.3</LangVersion>
+    <Optimize>false</Optimize>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <PlatformTarget>x64</PlatformTarget>
@@ -130,63 +67,42 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Data\Contract\DataManagerBase.cs" />
-    <Compile Include="Data\Contract\SettingsDataManagerBase.cs" />
-    <Compile Include="Data\GetBookmarksDataManager.cs" />
-    <Compile Include="Data\GetCurrentUserDetailsDataManager.cs" />
-    <Compile Include="Data\GetRequestTokenDataManager.cs" />
-    <Compile Include="Data\Handler\Contract\IDBHandler.cs" />
-    <Compile Include="Data\Handler\Contract\INetHandler.cs" />
-    <Compile Include="Data\Handler\DBHandler.cs" />
-    <Compile Include="Data\Handler\NetHandler.cs" />
-    <Compile Include="Data\Parser\ResponseDataParser.cs" />
-    <Compile Include="Data\SettingsDataManager.cs" />
-    <Compile Include="DI\DIServiceProvider.cs" />
-    <Compile Include="Domain\GetBookmarks.cs" />
-    <Compile Include="Domain\GetCurrentUserDetails.cs" />
-    <Compile Include="Domain\GetRequestToken.cs" />
-    <Compile Include="Domain\GetUserDetails.cs" />
-    <Compile Include="Model\BookmarkBObj.cs" />
-    <Compile Include="Model\Contract\IAttachment.cs" />
-    <Compile Include="Model\Contract\IBookmark.cs" />
-    <Compile Include="Model\DomainMetaDataBObj.cs" />
-    <Compile Include="Model\Entity\Author.cs" />
-    <Compile Include="Model\Entity\Bookmark.cs" />
-    <Compile Include="Model\Entity\BookmarkAuthorMapper.cs" />
-    <Compile Include="Model\Entity\BookmarkDomainMapper.cs" />
-    <Compile Include="Model\Entity\BookmarkItSettings.cs" />
-    <Compile Include="Model\Entity\DomainMetaData.cs" />
-    <Compile Include="Model\Entity\DownloadsMapper.cs" />
-    <Compile Include="Model\Entity\Image.cs" />
-    <Compile Include="Model\Entity\Tag.cs" />
-    <Compile Include="Model\Entity\UserDetails.cs" />
-    <Compile Include="Model\Entity\Video.cs" />
-    <Compile Include="Model\ImageBObj.cs" />
-    <Compile Include="Model\ParsedBookmarksResponse.cs" />
-    <Compile Include="Model\ParsedUserDetails.cs" />
-    <Compile Include="Model\VideoBObj.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\Constants.cs" />
-    <Compile Include="Util\Enums.cs" />
+    <Compile Include="ServiceManager.cs" />
     <Compile Include="Util\LibUtil.cs" />
     <EmbeddedResource Include="Properties\BookmarkItLibrary.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
-      <Version>3.1.0</Version>
+      <Version>3.1.7</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.9</Version>
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="ReadSharp">
+      <Version>6.3.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="DI\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Error\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookmarkItCommonLibrary\BookmarkItCommonLibrary.csproj">
+      <Project>{b5858b8b-dc4e-4278-b1c7-231a0a92c2fb}</Project>
+      <Name>BookmarkItCommonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{e4d88396-cec4-497b-b05f-94bc0e473f7a}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UWPUtilities\UWPUtilities.csproj">
       <Project>{628fe5b2-5707-4b26-a5fa-a14cc908eed4}</Project>
       <Name>UWPUtilities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Data\GetUserDetailsDataManager.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

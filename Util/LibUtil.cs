@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookmarkItCommonLibrary.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +12,16 @@ namespace BookmarkItLibrary.Util
     {
         public static Uri GetSignInUrl(string requestToken, bool isWebAuthenticationBroker = true)
         {
-            return new Uri(Constants.PocketAuthorizationUrl + $"?{Constants.ForceParamName}={Constants.LoginParamValue}" +
-                $"&{Constants.WebAuthenticationBrokerParamName}={(isWebAuthenticationBroker ? 1 : 0)}&{Constants.RequestTokenParamName}={requestToken}" +
-                $"&{Constants.RedirectUriParamName}={WebAuthenticationBroker.GetCurrentApplicationCallbackUri().ToString()}");
+            return new Uri(CommonConstants.PocketAuthorizationUrl + $"?{CommonConstants.ForceParamName}={CommonConstants.LoginParamValue}" +
+                $"&{CommonConstants.WebAuthenticationBrokerParamName}={(isWebAuthenticationBroker ? 1 : 0)}&{CommonConstants.RequestTokenParamName}={requestToken}" +
+                $"&{CommonConstants.RedirectUriParamName}={WebAuthenticationBroker.GetCurrentApplicationCallbackUri()}");
         }
 
         public static Uri GetSignUpUrl(string requestToken, bool isWebAuthenticationBroker = true)
         {
-            return new Uri(Constants.PocketAuthorizationUrl + $"?{Constants.ForceParamName}={Constants.SignUpParamValue}" +
-                $"&{Constants.WebAuthenticationBrokerParamName}={(isWebAuthenticationBroker ? 1 : 0)}&{Constants.RequestTokenParamName}={requestToken}" +
-                $"&{Constants.RedirectUriParamName}={WebAuthenticationBroker.GetCurrentApplicationCallbackUri().ToString()}");
+            return new Uri(CommonConstants.PocketAuthorizationUrl + $"?{CommonConstants.ForceParamName}={CommonConstants.SignUpParamValue}" +
+                $"&{CommonConstants.WebAuthenticationBrokerParamName}={(isWebAuthenticationBroker ? 1 : 0)}&{CommonConstants.RequestTokenParamName}={requestToken}" +
+                $"&{CommonConstants.RedirectUriParamName}={WebAuthenticationBroker.GetCurrentApplicationCallbackUri()}");
         }
     }
 }
